@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Happy Birthday My Bestie 💖</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(145deg, #2b1a2e 0%, #4a2c3a 40%, #b94e6b 100%);
+      color: #fff4f0;
+      text-align: center;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    /* floating hearts – more romantic */
+    .heart {
+      position: fixed;
+      bottom: -30px;
+      font-size: 1.8rem;
+      animation: rise 9s infinite ease-in;
+      color: rgba(255, 215, 235, 0.9);
+      text-shadow: 0 0 8px #ffb7c5;
+      z-index: 3;
+      pointer-events: none;
+      will-change: transform;
+    }
+
+    @keyframes rise {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+      100% { transform: translateY(-120vh) rotate(25deg); opacity: 0; }
+    }
+
+    /* soft romantic overlay */
+    .glow-overlay {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 50% 30%, rgba(255, 190, 200, 0.2), transparent 70%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem 1.5rem;
+      background: rgba(0,0,0,0.1);
+      backdrop-filter: blur(2px);
+      position: relative;
+      z-index: 5;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 600;
+      line-height: 1.3;
+      text-shadow: 0 0 20px #ff99aa, 2px 2px 0 #3b1e2b;
+      animation: softGlow 4s infinite alternate;
+    }
+
+    @keyframes softGlow {
+      0% { text-shadow: 0 0 15px #ffb3c6, 2px 2px 0 #3b1e2b; }
+      100% { text-shadow: 0 0 30px #ffe2eb, 4px 4px 0 #5e2a3a; }
+    }
+
+    .hero p {
+      font-size: 1.7rem;
+      margin: 1rem 0 2rem;
+      background: rgba(255,255,240,0.15);
+      padding: 0.6rem 1.5rem;
+      border-radius: 60px;
+      backdrop-filter: blur(10px);
+      font-weight: 300;
+      letter-spacing: 0.5px;
+    }
+
+    .btn {
+      padding: 18px 40px;
+      background: #fff0f5;
+      color: #a1355b;
+      border: none;
+      border-radius: 60px;
+      font-size: 1.4rem;
+      font-weight: 600;
+      box-shadow: 0 10px 20px rgba(160, 30, 70, 0.5);
+      cursor: pointer;
+      transition: 0.3s ease;
+      border: 2px solid #ffc1cc;
+    }
+
+    .btn:hover {
+      background: #ffeef2;
+      transform: scale(1.08);
+      box-shadow: 0 15px 30px #ff6380;
+    }
+
+    /* gallery */
+    .gallery {
+      padding: 3rem 1rem;
+      background: rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(6px);
+      border-radius: 60px 60px 0 0;
+      margin-top: -20px;
+      z-index: 5;
+      position: relative;
+    }
+
+    .gallery h2 {
+      font-size: 2.4rem;
+      margin-bottom: 2rem;
+      display: inline-block;
+      border-bottom: 4px solid #ffb0c3;
+      padding-bottom: 0.7rem;
+    }
+
+    /* photo grid – perfect for portrait mobile photos */
+    .photos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 0.8rem;
+    }
+
+    .photos img {
+      width: 100%;
+      aspect-ratio: 3 / 4;  /* classic portrait ratio ~ most phone pics */
+      object-fit: cover;
+      border-radius: 28px;
+      box-shadow: 0 20px 25px -8px rgba(0,0,0,0.6), 0 0 0 3px #ffb6c180;
+      transition: 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+      background: #fad add; /* fallback */
+      border: 2px solid #ffe2ec;
+    }
+
+    .photos img:hover {
+      transform: scale(1.02) translateY(-8px);
+      box-shadow: 0 35px 30px -10px black, 0 0 0 4px #ff94b2;
+    }
+
+    /* message section – emotional and intimate */
+    .message {
+      padding: 3rem 1.8rem;
+      max-width: 780px;
+      margin: 0 auto;
+      background: rgba(30, 15, 22, 0.5);
+      backdrop-filter: blur(10px);
+      border-radius: 70px 70px 30px 30px;
+      box-shadow: inset 0 0 50px #ffb6c180;
+      border: 2px solid #ffb0bb;
+      text-align: left;
+      line-height: 1.8;
+      font-size: 1.25rem;
+      color: #fff0f0;
+      z-index: 6;
+      position: relative;
+    }
+
+    .message h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: #ffd9e2;
+      text-shadow: 0 0 10px hotpink;
+    }
+
+    .message p {
+      white-space: pre-line;  /* keeps your line breaks */
+      font-weight: 300;
+      letter-spacing: 0.3px;
+    }
+
+    /* highlight some emotional words softly */
+    .message p i, .message p strong {
+      color: #ffe7b0;
+      font-weight: 500;
+    }
+
+    footer {
+      padding: 2rem 1rem;
+      font-size: 1.3rem;
+      background: #2d1822;
+      color: #ffd3db;
+      border-top: 3px solid #ff91a4;
+      margin-top: 3rem;
+      font-style: italic;
+      letter-spacing: 1px;
+    }
+
+    /* audio hidden – but works */
+    audio {
+      display: none;
+    }
+
+    /* little romantic buntings */
+    .buntings {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      pointer-events: none;
+      z-index: 10;
+      opacity: 0.4;
+    }
+
+    /* responsive fine-tune */
+    @media (max-width: 500px) {
+      .hero h1 { font-size: 2.3rem; }
+      .hero p { font-size: 1.4rem; }
+      .btn { font-size: 1.2rem; padding: 16px 28px; }
+      .gallery h2 { font-size: 2rem; }
+      .photos { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+      .photos img { border-radius: 20px; }
+      .message { font-size: 1.1rem; padding: 2rem 1.2rem; }
+    }
+
+    /* smooth scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+  <div class="glow-overlay"></div>
+
+  <!-- hidden music: autoplay works on most mobile if user interaction first, but we keep it -->
+  <audio autoplay loop playsinline muted>  
+    <!-- muted is often needed for autoplay policy; we add unmute hint after any click -->
+    <source src="song.mp3" type="audio/mpeg">
+  </audio>
+  <script>
+    // attempt to unmute after any tap (to respect autoplay policies)
+    document.addEventListener('click', function() {
+      const audio = document.querySelector('audio');
+      if (audio) {
+        audio.muted = false;
+        audio.play().catch(e => {}); // ignore
+      }
+    }, { once: true });
+  </script>
+
+  <!-- floating hearts generator (extra romantic) -->
+  <div id="heart-container" style="position:fixed; inset:0; pointer-events:none; z-index:15;"></div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Happy Birthday My Gundachii!!<br>Chaithanya 💖🎂</h1>
+    <p>You are the most special person in my life ✨</p>
+    <button class="btn" onclick="document.getElementById('gallery').scrollIntoView({behavior:'smooth'})">See Surprise 🎁</button>
+  </section>
+
+  <!-- Gallery with portrait optimized images (replace jpg names if needed) -->
+  <section class="gallery" id="gallery">
+    <h2>📸 Our Beautiful Memories</h2>
+    <div class="photos">
+      <!-- portrait friendly grid: 3:4 ratio. use your actual photos named 1.jpg ... 17.jpg -->
+      <img src="1.jpg" alt="memory 1" loading="lazy">
+      <img src="2.jpg" alt="memory 2" loading="lazy">
+      <img src="3.jpg" alt="memory 3" loading="lazy">
+      <img src="4.jpg" alt="memory 4" loading="lazy">
+      <img src="5.jpg" alt="memory 5" loading="lazy">
+      <img src="6.jpg" alt="memory 6" loading="lazy">
+      <img src="7.jpg" alt="memory 7" loading="lazy">
+      <img src="8.jpg" alt="memory 8" loading="lazy">
+      <img src="9.jpg" alt="memory 9" loading="lazy">
+      <img src="10.jpg" alt="memory 10" loading="lazy">
+      <img src="11.jpg" alt="memory 11" loading="lazy">
+      <img src="12.jpg" alt="memory 12" loading="lazy">
+      <img src="13.jpg" alt="memory 13" loading="lazy">
+      <img src="14.jpg" alt="memory 14" loading="lazy">
+      <img src="15.jpg" alt="memory 15" loading="lazy">
+      <img src="16.jpg" alt="memory 16" loading="lazy">
+      <img src="17.jpg" alt="memory 17" loading="lazy">
+    </div>
+  </section>
+
+  <!-- Special Message (exactly your words, emotionally styled) -->
+  <section class="message">
+    <h2>💌 A Special Message For You</h2>
+    <p>
+💖 My Precious… My Everything 💖
+
+From the day we met, my life completely changed.
+Everything became brighter… happier… more beautiful ✨
+
+Your smile is my most favorite thing in this whole world 😍
+Whenever you smile, my heart feels peaceful.
+
+In my life, many things changed…
+But one thing never changed —
+You are always in my heart. Only you. Forever you. 💞
+
+Happy Birthday pett 🎂
+Happy Birthday pakki 🥺
+Happy Birthday gundachii 💕
+Happy Birthday gunduuu 🫶🏻
+
+Everything is you only…
+That much I like you… that much I love you… that much you mean to me 💎
+
+You are my precious 💖
+My diamond 💎
+My jewel 👑
+My gem 💍
+My whole world 🌍
+My everythinggggg 💞✨
+
+I know in 2025, I made you hurt sometimes…
+I am really very sorry for that 🥺
+But I hope you know one thing —
+Your babs will always be there for you.
+Today… tomorrow… forever. 🤍
+
+One day I will come to your house…
+Only for you 🏠💖
+My God, my daiva will do everything for me.
+It is sure. Everything will become good. 🙏✨
+
+You will grow higher than me 📈🌟
+You will achieve more than me.
+And you will still support me…
+Like a mother supports her child 🥺💞
+
+In Karnataka…
+Only you gave me food 🍛
+Only you cared for me like a mother 🤍
+Only you. No one else.
+
+One day… just like Vijay Devarakonda and Rashmika life became beautiful and successful…
+Our life will also become the best and happiest 🥰✨
+
+That day…
+Will be the most beautiful day of my life 💖
+
+Placements are coming…
+You will get placed in the best company 🏢✨
+You will earn a great salary 💰
+You will shine like a star 🌟
+And I will proudly watch you win in life 🥹💞
+
+I want to tell you so many things…
+But when it comes to you, words don’t come properly…
+Because my love for you is bigger than words 🤍
+
+Once again…
+Happy Birthday gunduuu 🥺🎂💖
+
+Always yours,
+Your babs 🫶🏻✨
+    </p>
+  </section>
+
+  <footer>
+    Made with infinite Love ❤️ by Babs Thiyanand
+  </footer>
+
+  <script>
+    // function to generate more romantic floating hearts with variation
+    function createHeart() {
+      const heartEl = document.createElement("div");
+      heartEl.classList.add("heart");
+      // alternate emojis for more romance
+      const symbols = ["💖", "💗", "💓", "💕", "💞", "🌸", "✨", "💘", "💝"];
+      heartEl.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+      heartEl.style.left = Math.random() * 100 + "%";
+      heartEl.style.fontSize = (Math.random() * 2 + 1.2) + "rem";
+      heartEl.style.animationDuration = (Math.random() * 5 + 5) + "s"; // between 5-10s
+      heartEl.style.opacity = Math.random() * 0.5 + 0.4;
+      document.body.appendChild(heartEl);
+
+      setTimeout(() => {
+        heartEl.remove();
+      }, 11000);
+    }
+
+    // hearts a bit slower but more constant
+    setInterval(createHeart, 500);
+
+    // also add extra love on click (optional)
+    document.body.addEventListener('click', function(e) {
+      for (let i=0; i<3; i++) {
+        setTimeout(createHeart, i*70);
+      }
+    });
+
+    // lazy or smooth additional effect: buntings not necessary, but keep it minimal
+
+    // fix for potential missing images: add subtle background if image missing
+    document.querySelectorAll('.photos img').forEach(img => {
+      img.onerror = function() {
+        this.style.background = 'linear-gradient(145deg, #fdafc0, #f985a2)';
+        this.alt = '💖 memory';
+      };
+    });
+  </script>
+
+  <!-- note: your original photos will show perfectly in 3:4 aspect. 
+       if some are landscape, they'll be centered without distortion thanks to object-fit: cover -->
+</body>
+</html>
